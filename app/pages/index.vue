@@ -27,6 +27,11 @@ import Card from "~/components/Card.vue"
 })
 export default class extends Vue {
   @State people!: Person
+
+  async mounted() {
+    const ip = await this.$axios.$get('http://localhost:4000/cats/json')
+    console.log(ip)
+  }
 }
 </script>
 
