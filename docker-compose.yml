@@ -1,8 +1,8 @@
 version: '3'
 services:
-  app:
+  client:
     image: node:12.11.0-alpine
-    container_name: app
+    container_name: client
     environment:
       PORT: 3000
       HOST: 0.0.0.0
@@ -11,35 +11,15 @@ services:
     working_dir:
       /src
     volumes:
-      - ./app:/src
+      - ./client:/src
     command: [sh, -c, yarn install && yarn dev]
-  api:
+  server:
     image: node:12.11.0-alpine
-    container_name: api
+    container_name: server
     ports:
       - 4000:4000
     working_dir:
-      /api
+      /server
     volumes:
-      - ./api:/api
+      - ./server:/server
     command: [sh, -c, yarn install && yarn start:dev]
-  # mongo:
-  #   image: mongo
-  #   restart: always
-  #   ports:
-  #     - 27017:27017
-  #     - 27018:27018
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-  #     MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-  #   volumes:
-  #     - ./db:/data/db
-  #     - ./configdb:/data/configdb
-  # mongo-express:
-  #     image: mongo-express
-  #     restart: always
-  #     ports:
-  #       - 8081:8081
-  #     environment:
-  #       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-  #       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
