@@ -29,7 +29,8 @@ export default class extends Vue {
   @State people!: Person
 
   async mounted() {
-    const ip = await this.$axios.$get('http://localhost:4000/cats/')
+    console.log(`${location.protocol}//${location.hostname}:4000/cats/`)
+    const ip = await this.$axios.$get(`${location.protocol}//${location.hostname}:4000/cats/`)
     console.log(ip)
   }
 }
