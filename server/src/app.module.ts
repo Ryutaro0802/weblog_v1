@@ -4,20 +4,20 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatModule } from './cats/cat.module';
 import { Cat } from './cats/cat.entity';
-import { ArticlesController } from './articles/articles.controller';
-import { ArticlesService } from './articles/articles.service';
+import { Article } from './articles/article.entity';
+import { ArticleModule } from './articles/article.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: './db/sqlitedb.db',
-      entities: [Cat],
+      entities: [Article],
       synchronize: true,
     }),
-    CatModule,
+    ArticleModule,
   ],
-  controllers: [AppController, ArticlesController],
-  providers: [AppService, ArticlesService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule { }

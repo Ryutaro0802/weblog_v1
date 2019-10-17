@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Tag } from '../tags/interfaces/tag.interface';
 
 @Entity()
 export class Article {
@@ -17,7 +18,6 @@ export class Article {
     @Column()
     updatedAt: Date;
 
-    @Column()
-    // FIXME Tagのinterface実装後差し替え
+    @Column('text', { array: true })
     tags: [];
 }
