@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatModule } from './cats/cat.module';
 import { Cat } from './cats/cat.entity';
+import { ArticlesController } from './articles/articles.controller';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { Cat } from './cats/cat.entity';
     }),
     CatModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, ArticlesController],
   providers: [AppService],
 })
 export class AppModule { }
