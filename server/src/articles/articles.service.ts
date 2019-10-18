@@ -10,8 +10,10 @@ export class ArticlesService {
         private readonly articleRepository: Repository<Article>,
     ) {}
 
-    async crate(article: Article): Promise<Article> {
+    async create(article: Article): Promise<Article> {
+        console.log(article);
         const newArticle = this.articleRepository.create(article);
+        console.log(newArticle);
         return await this.articleRepository.save(newArticle);
     }
 

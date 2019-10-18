@@ -1,5 +1,4 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Tag } from '../tags/interfaces/tag.interface';
 
 @Entity()
 export class Article {
@@ -18,6 +17,6 @@ export class Article {
     @Column()
     updatedAt: Date;
 
-    @Column('text', { array: true })
-    tags: [];
+    @Column()
+    tagIds: string;
 }
