@@ -17,6 +17,6 @@ export class Article {
     @Column()
     updatedAt: Date;
 
-    @Column()
-    tagIds: string;
+    @Column('simple-array')
+    tagIds: string[];
 }

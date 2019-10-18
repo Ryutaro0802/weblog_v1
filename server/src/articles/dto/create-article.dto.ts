@@ -6,5 +6,5 @@ export class CreateArticleDto implements Article {
     readonly text: string;
     readonly createdAt: Date;
     readonly updatedAt: Date;
-    readonly tagIds: string;
+    readonly tagIds: string[];
 }
