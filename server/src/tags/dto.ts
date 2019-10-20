@@ -1,7 +1,3 @@
-import { Tag } from './interface';
-
-export class CreateTagDto implements Tag {
-    readonly id: number;
+export class CreateTagDto {
     readonly label: string;
-    readonly createdAt: Date;
 }

@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Article } from './articles/article.entity';
-import { Tag } from './tags/tag.entity';
+import { TagEntity } from './tags/tag.entity';
 import { ArticleModule } from './articles/article.module';
 import { TagModule } from './tags/tag.module';
 
@@ -12,7 +12,7 @@ import { TagModule } from './tags/tag.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: './db/sqlitedb.db',
-      entities: [Article, Tag],
+      entities: [Article, TagEntity],
       synchronize: true,
     }),
     ArticleModule,

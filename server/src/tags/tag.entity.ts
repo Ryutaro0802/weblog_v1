@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Tag {
+export class TagEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -10,4 +10,7 @@ export class Tag {
 
     @Column()
     createdAt: Date;
+
+    @Column()
+    updatedAt: Date;
 }
