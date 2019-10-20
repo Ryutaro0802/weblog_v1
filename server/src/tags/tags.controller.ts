@@ -17,8 +17,8 @@ export class TagsController {
         return this.tagsService.findAll();
     }
 
-    // @Get(':id')
-    // findOne(@Param('id') id: string) {
-        // return `ID${id}のArticle`;
-    // }
+    @Get(':id')
+    async findOne(@Param('id') id: number): Promise<Tag> {
+        return this.tagsService.findOne(id);
+    }
 }

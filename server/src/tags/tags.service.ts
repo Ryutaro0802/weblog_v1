@@ -13,15 +13,18 @@ export class TagsService {
     ) {}
 
     async create(createTagDto: CreateTagDto): Promise<TagEntity> {
-        const tag = new TagEntity();
-        tag.label = createTagDto.label;
-        tag.createdAt = new Date();
-        tag.updatedAt = new Date();
-        const newTag: Tag = tag;
+        const newTag: Tag = new TagEntity();
+        newTag.label = createTagDto.label;
+        newTag.createdAt = new Date();
+        newTag.updatedAt = new Date();
         return await this.tagRepository.save(newTag);
     }
 
     async findAll(): Promise<TagEntity[]> {
         return await this.tagRepository.find();
+    }
+
+    async findOne(id: number): Promise<TagEntity> {
+        return await this.tagRepository.findOne(id);
     }
 }
