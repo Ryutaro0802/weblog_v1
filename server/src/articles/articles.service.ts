@@ -16,14 +16,13 @@ export class ArticlesService {
     ) { }
 
     async create(createArticleDto: CreateArticleDto): Promise<ArticleEntity> {
-        const newArticle = new ArticleEntity();
+        const newArticle: Article = new ArticleEntity();
         newArticle.title = createArticleDto.title;
         newArticle.text = createArticleDto.text;
         newArticle.createdAt = new Date();
         newArticle.updatedAt = new Date();
-        newArticle.tags = await Promise.all(createArticleDto.tagIds.map(async (id: string) => {
-            const tag = await this.tagRepository.findOne(parseInt(id, 10));
-            return tag;
+        newArticle.tags = await Promise.all(createArticleDto.tagIds.map(async (id: string): Promise<TagEntity> => {
+            return await this.tagRepository.findOne(parseInt(id, 10));
         }));
         return await this.articleRepository.save(newArticle);
     }
