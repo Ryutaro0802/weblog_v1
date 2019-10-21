@@ -15,6 +15,6 @@ export class TagEntity {
     @Column()
     updatedAt: Date;
 
-    @ManyToOne(() => ArticleEntity, article => article.tags)
+    @ManyToOne(type => ArticleEntity, article => article.tags)
     article: ArticleEntity;
 }
