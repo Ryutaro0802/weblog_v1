@@ -18,9 +18,6 @@ export class ArticleEntity {
     @Column()
     updatedAt: Date;
 
-    @Column('simple-array')
-    tagIds: string[];
-
     @OneToMany(type => TagEntity, tag => tag.article, { eager: true })
     @JoinColumn()
     tags: any[];

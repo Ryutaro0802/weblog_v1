@@ -19,7 +19,6 @@ export class ArticlesService {
         const newArticle = new ArticleEntity();
         newArticle.title = createArticleDto.title;
         newArticle.text = createArticleDto.text;
-        newArticle.tagIds = createArticleDto.tagIds;
         newArticle.createdAt = new Date();
         newArticle.updatedAt = new Date();
         newArticle.tags = await Promise.all(createArticleDto.tagIds.map(async (id: string) => {

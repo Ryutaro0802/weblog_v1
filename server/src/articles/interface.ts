@@ -6,6 +6,5 @@ export interface Article {
     text: string;
     createdAt: Date;
     updatedAt: Date;
-    tagIds: string[];
     tags: Tag[];
 }
