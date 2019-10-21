@@ -20,5 +20,5 @@ export class ArticleEntity {
 
     @OneToMany(type => TagEntity, tag => tag.article, { eager: true })
     @JoinColumn()
-    tags: any[];
+    tags: TagEntity[];
 }
