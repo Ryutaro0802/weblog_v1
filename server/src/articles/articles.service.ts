@@ -22,12 +22,10 @@ export class ArticlesService {
         newArticle.tagIds = createArticleDto.tagIds;
         newArticle.createdAt = new Date();
         newArticle.updatedAt = new Date();
-        // newArticle.tags = createArticleDto.tagIds.map(async (id: string) => {
-        //     return await this.tagRepository.findOne(parseInt(id, 10));
-        // });
-        newArticle.tags = await this.tagRepository.find();
-        console.log(createArticleDto);
-        console.log(newArticle);
+        newArticle.tags = await Promise.all(createArticleDto.tagIds.map(async (id: string) => {
+            const tag = await this.tagRepository.findOne(parseInt(id, 10));
+            return tag;
+        }));
         return await this.articleRepository.save(newArticle);
     }
 
