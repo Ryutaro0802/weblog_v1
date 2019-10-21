@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import { TagEntity } from '../tags/tag.entity';
 
 @Entity()
-export class Article {
+export class ArticleEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -19,4 +20,8 @@ export class Article {
 
     @Column('simple-array')
     tagIds: string[];
+
+    @OneToMany(type => TagEntity, tag => tag.article, { eager: true})
+    @JoinColumn()
+    tags: TagEntity[];
 }
