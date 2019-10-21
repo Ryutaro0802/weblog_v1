@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
-import { Article } from './interfaces/article.interface';
+import { Article } from './interface';
 import { CreateArticleDto } from './dto';
 
 @Controller('articles')

@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { ArticleEntity } from '../articles/article.entity';
 
 @Entity()
@@ -15,6 +15,6 @@ export class TagEntity {
     @Column()
     updatedAt: Date;
 
-    @ManyToOne(type => ArticleEntity, article => article.tags)
+    @ManyToOne(() => ArticleEntity, article => article.tags)
     article: ArticleEntity;
 }

@@ -1,3 +1,5 @@
+import { Tag } from '../tags/interface';
+
 export interface Article {
     id: number;
     title: string;
@@ -5,4 +7,5 @@ export interface Article {
     createdAt: Date;
     updatedAt: Date;
     tagIds: string[];
+    tags: Tag[];
 }
