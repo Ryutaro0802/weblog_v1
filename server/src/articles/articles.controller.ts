@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
-import { Article } from './interfaces/article.interface';
-import { CreateArticleDto } from './dto/create-article.dto';
+import { Article } from './interface';
+import { CreateArticleDto } from './dto';
 
 @Controller('articles')
 export class ArticlesController {
@@ -9,7 +9,6 @@ export class ArticlesController {
 
     @Post()
     async create(@Body() createArticleDto: CreateArticleDto) {
-        console.log('contro', createArticleDto);
         this.articlesService.create(createArticleDto);
     }
 

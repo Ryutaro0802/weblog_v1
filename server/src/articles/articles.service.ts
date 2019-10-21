@@ -1,23 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Article } from './article.entity';
+import { Repository, createConnection } from 'typeorm';
+import { Article } from './interface';
+import { ArticleEntity } from './article.entity';
+import { CreateArticleDto } from './dto';
+import { TagEntity } from '../tags/tag.entity';
 
 @Injectable()
 export class ArticlesService {
     constructor(
-        @InjectRepository(Article)
-        private readonly articleRepository: Repository<Article>,
-    ) {}
+        @InjectRepository(ArticleEntity)
+        private readonly articleRepository: Repository<ArticleEntity>,
+        @InjectRepository(TagEntity)
+        private readonly tagRepository: Repository<TagEntity>,
+    ) { }
 
-    async create(article: Article): Promise<Article> {
-        console.log(article);
-        const newArticle = this.articleRepository.create(article);
-        console.log(newArticle);
+    async create(createArticleDto: CreateArticleDto): Promise<ArticleEntity> {
+        const newArticle = new ArticleEntity();
+        newArticle.title = createArticleDto.title;
+        newArticle.text = createArticleDto.text;
+        newArticle.createdAt = new Date();
+        newArticle.updatedAt = new Date();
+        newArticle.tags = await Promise.all(createArticleDto.tagIds.map(async (id: string) => {
+            const tag = await this.tagRepository.findOne(parseInt(id, 10));
+            return tag;
+        }));
         return await this.articleRepository.save(newArticle);
     }
 
-    async findAll(): Promise<Article[]> {
+    async findAll(): Promise<ArticleEntity[]> {
         return await this.articleRepository.find();
     }
 }
