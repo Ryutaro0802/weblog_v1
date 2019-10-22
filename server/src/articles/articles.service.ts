@@ -21,8 +21,8 @@ export class ArticlesService {
         newArticle.text = createArticleDto.text;
         newArticle.createdAt = new Date();
         newArticle.updatedAt = new Date();
-        newArticle.tags = await Promise.all(createArticleDto.tagIds.map(async (id: string): Promise<TagEntity> => {
-            return await this.tagRepository.findOne(parseInt(id, 10));
+        newArticle.tags = await Promise.all(createArticleDto.tagIds.map(async (id: number): Promise<TagEntity> => {
+            return await this.tagRepository.findOne(id);
         }));
         return await this.articleRepository.save(newArticle);
     }
