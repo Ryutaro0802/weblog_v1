@@ -30,4 +30,8 @@ export class ArticlesService {
     async findAll(): Promise<ArticleEntity[]> {
         return await this.articleRepository.find();
     }
+
+    async findOne(id: number): Promise<ArticleEntity> {
+        return await this.articleRepository.findOne(id);
+    }
 }

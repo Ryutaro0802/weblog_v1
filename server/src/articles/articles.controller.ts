@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
 import { Article } from './interface';
 import { CreateArticleDto } from './dto';
@@ -13,8 +13,8 @@ export class ArticlesController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return `ID${id}のArticle`;
+    findOne(@Param('id') id: number) {
+        return this.articlesService.findOne(id);
     }
 
     @Post()
