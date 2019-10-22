@@ -7,11 +7,6 @@ import { CreateArticleDto } from './dto';
 export class ArticlesController {
     constructor(private readonly articlesService: ArticlesService) { }
 
-    @Post()
-    async create(@Body() createArticleDto: CreateArticleDto) {
-        this.articlesService.create(createArticleDto);
-    }
-
     @Get()
     async findAll(): Promise<Article[]> {
         return this.articlesService.findAll();
@@ -20,5 +15,10 @@ export class ArticlesController {
     @Get(':id')
     findOne(@Param('id') id: string) {
         return `ID${id}のArticle`;
+    }
+
+    @Post()
+    async create(@Body() createArticleDto: CreateArticleDto) {
+        this.articlesService.create(createArticleDto);
     }
 }
