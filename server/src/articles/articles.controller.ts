@@ -13,12 +13,17 @@ export class ArticlesController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: number) {
+    findOne(@Param('id') id: number): Promise<Article> {
         return this.articlesService.findOne(id);
     }
 
     @Post()
-    async create(@Body() createArticleDto: CreateArticleDto) {
-        this.articlesService.create(createArticleDto);
+    async create(@Body() createArticleDto: CreateArticleDto): Promise<Article> {
+        return this.articlesService.create(createArticleDto);
+    }
+
+    @Delete(':id')
+    remove(@Param('id') id: number): Promise<Article> {
+        return this.articlesService.remove(id);
     }
 }
