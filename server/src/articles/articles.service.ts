@@ -30,4 +30,13 @@ export class ArticlesService {
     async findAll(): Promise<ArticleEntity[]> {
         return await this.articleRepository.find();
     }
+
+    async findOne(id: number): Promise<ArticleEntity> {
+        return await this.articleRepository.findOne(id);
+    }
+
+    async remove(id: number): Promise<ArticleEntity> {
+        const article = await this.articleRepository.findOne(id);
+        return await this.articleRepository.remove(article);
+    }
 }

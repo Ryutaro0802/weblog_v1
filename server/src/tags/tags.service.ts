@@ -27,4 +27,9 @@ export class TagsService {
     async findOne(id: number): Promise<TagEntity> {
         return await this.tagRepository.findOne(id);
     }
+
+    async remove(id: number): Promise<TagEntity> {
+        const tag = await this.tagRepository.findOne(id);
+        return await this.tagRepository.remove(tag);
+    }
 }
