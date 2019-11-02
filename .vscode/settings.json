@@ -1,7 +1,16 @@
 {
     "cSpell.words": [
+        "asynciterable",
+        "axios",
+        "es",
+        "esnext",
+        "interop",
+        "module",
         "nestjs",
+        "nuxt",
+        "nuxtjs",
         "sqlitedb",
-        "typeorm"
+        "typeorm",
+        "types"
     ]
 }
