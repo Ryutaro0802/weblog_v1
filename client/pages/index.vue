@@ -26,7 +26,7 @@ import Card from "~/components/Card.vue"
     Card
   }
 })
-export default class extends Vue {
+export default class IndexPage extends Vue {
   @State people!: Person
   private articles = []
 
