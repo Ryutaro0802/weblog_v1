@@ -18,5 +18,8 @@ export default {
   modules: [
     "@nuxtjs/axios",
   ],
-  axios: {}
+  // axios: {
+  //   baseURL: "http://server:4000",
+  //   browserBaseURL: "http://localhost:4000"
+  // }
 }
