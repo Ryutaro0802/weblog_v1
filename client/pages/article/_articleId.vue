@@ -19,7 +19,7 @@ import { State } from "vuex-class";
 @Component
 export default class ArticlePage extends Vue {
   async asyncData({ $axios, route }) {
-    const article = await $axios.get(`http://server:4000/articles/2`)
+    const article = await $axios.get(`/articles/2`)
     return {
       article: article.data
     }
