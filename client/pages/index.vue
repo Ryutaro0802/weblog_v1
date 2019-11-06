@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 class="header">memo.</h1>
+    <h1 class="header">
+      <nuxt-link to="/">memo.</nuxt-link>
+    </h1>
     <ul class="article-list">
       <li v-for="article in articles" :key="article.id">
         <nuxt-link :to="`/article/${article.id}`">
