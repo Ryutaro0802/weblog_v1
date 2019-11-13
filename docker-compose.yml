@@ -13,6 +13,19 @@ services:
     volumes:
       - ./client:/src
     command: [sh, -c, yarn install && yarn dev]
+  author:
+    image: node:12.11.0-alpine
+    container_name: author
+    environment:
+      PORT: 5000
+      HOST: 0.0.0.0
+    ports:
+      - "5000:5000"
+    working_dir:
+      /author
+    volumes:
+      - ./author:/author
+    command: [sh, -c, yarn install && yarn dev]
   server:
     image: node:12.11.0-alpine
     container_name: server
