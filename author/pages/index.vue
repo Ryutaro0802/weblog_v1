@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="header">
-      <nuxt-link to="/">memo.</nuxt-link>
+      <nuxt-link to="/">Author</nuxt-link>
     </h1>
   </div>
 </template>
@@ -23,10 +23,6 @@ import Card from "~/components/Card.vue"
 export default class IndexPage extends Vue {
   @State people!: Person
   private articles = []
-
-  async mounted() {
-    this.articles = await this.$axios.$get(`${location.protocol}//${location.hostname}:4000/articles`)
-  }
 }
 </script>
 
