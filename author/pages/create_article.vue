@@ -8,11 +8,20 @@
 
     <form @submit.prevent="submitArticle">
         <div>
+          <h3>
+            ArticleTitle
+          </h3>
             <input v-model="articleTitle" type="text">
         </div>
         <div>
+          <h3>
+            ArticleText
+          </h3>
             <textarea v-model="articleText" name="" id="" cols="30" rows="10"></textarea>
         </div>
+        <h3>
+          ArticleTags
+        </h3>
         <input type="text">
         <button>送信</button>
     </form>
